@@ -1,0 +1,13 @@
+*.code-workspace
+*.iso
+isodir/*
+*.log
+.vscode/*
+kernel/*.o
+kernel/*/*.o
+kernel/*/*/*.o
+kernel/*/*/*/*.o
+kernel/*.elf
+__pycache__/
+*.py[cod]
+build
