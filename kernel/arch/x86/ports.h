@@ -23,7 +23,7 @@ void outw(u16 port, u16 val);
 void outl(u16 port, u32 val);
 void insl(u16 port, void *buffer, size_t count);
 
-void io_wait();
+void wait_few_usecs();
 
 int com1_is_transmit_empty();
 int com1_is_data_ready();

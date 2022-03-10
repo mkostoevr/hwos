@@ -25,14 +25,14 @@ void pic_unmask_all() {
 void pic_remap() {
     outb(PIC_MASTER_CMD, 0x11); // starts the initialization sequence (in cascade mode)
     outb(PIC_SLAVE_CMD, 0x11);
-    io_wait();
+    wait_few_usecs();
     outb(PIC_MASTER_DAT, 0x20); // ICW2: Master PIC vector offset
     outb(PIC_SLAVE_DAT, 0x28); // ICW2: Slave PIC vector offset
-    io_wait();
+    wait_few_usecs();
     outb(PIC_MASTER_DAT, 0x04); // ICW3: tell Master PIC that there is a slave PIC at IRQ2 (0000 0100)
     outb(PIC_SLAVE_DAT, 0x02); // ICW3: tell Slave PIC its cascade identity (0000 0010)
-    io_wait();
+    wait_few_usecs();
     outb(PIC_MASTER_DAT, 0x01); // 8086/88 (MCS-80/85) mode
     outb(PIC_SLAVE_DAT, 0x01);
-    io_wait();
+    wait_few_usecs();
 }

@@ -34,7 +34,7 @@ void insl(u16 port, void *buffer, size_t count) {
     asm volatile ("cld; rep; insl" :: "D" (buffer), "d" (port), "c" (count));
 }
 
-void io_wait() {
+void wait_few_usecs() {
     outb(0x80, 0);
 }
 
