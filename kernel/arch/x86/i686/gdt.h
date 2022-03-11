@@ -3,10 +3,6 @@
 #include <kernel/types.h>
 #include "tss.h"
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef struct {
     u16 limit_low;
     u16 base_low;
@@ -35,8 +31,3 @@ uintptr_t gdt_get_gsbase(void);
 void write_tss(int32_t num, u16 ss0, uint32_t esp0);
 void set_kernel_stack(uintptr_t stack);
 void gdt_install();
-
-#ifdef __cplusplus
-}
-#endif
-

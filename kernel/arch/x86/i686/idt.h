@@ -4,10 +4,6 @@
 
 #define IDT_MAX_DESCRIPTORS 256
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef struct {
     u16 isr_low;   // The lower 16 bits of the ISR's address
     u16 cs;        // The GDT segment selector that the CPU will load into CS before calling the ISR
@@ -32,8 +28,3 @@ void idt_load(idtr_t *);
 
 void idt_set_gate(u8 num, idt_gate_t base, u16 sel, u8 flags);
 void idt_install();
-
-#ifdef __cplusplus
-}
-#endif
-

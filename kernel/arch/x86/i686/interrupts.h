@@ -1,9 +1,5 @@
 #include <kernel/types.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 typedef struct {
   u32  ds;
   u32  edi, esi, ebp, esp, ebx, edx, ecx, eax;
@@ -67,10 +63,3 @@ void interrupt_handler44();
 void interrupt_handler45();
 void interrupt_handler46();
 void interrupt_handler47();
-
-#ifdef __cplusplus
-}
-#endif
-
-
-

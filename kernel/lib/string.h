@@ -1,9 +1,5 @@
 #include <kernel/types.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 int memcmp(const void *s1, const void *s2, size_t n);
 void *memcpy(void *s1, const void *s2, size_t n);
 void *memmove(void *s1, const void *s2, size_t n);
@@ -24,8 +20,3 @@ char *strrev(char *p);
 char *strtok(char *s, const char *delim);
 size_t strspn(const char *s1, const char *s2);
 char *strstr(const char *s1, const char *s2);
-
-#ifdef __cplusplus
-}
-#endif
-

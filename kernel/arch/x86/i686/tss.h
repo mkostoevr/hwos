@@ -2,10 +2,6 @@
 
 #include <kernel/types.h>
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
 void tss_flush(void);
 
 typedef struct tss_entry {
@@ -37,8 +33,3 @@ typedef struct tss_entry {
 	u16	trap;
 	u16	iomap_base;
 } __attribute__ ((packed)) tss_entry_t;
-
-#ifdef __cplusplus
-}
-#endif
-
