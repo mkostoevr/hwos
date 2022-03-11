@@ -1,6 +1,6 @@
 #include "pci.h"
 #include "ports.h"
-#include <kernel/io/fdo.h>
+#include <kernel/lib/fdo.h>
 
 u16 pci_legacy_read_16(u8 bus, u8 device, u8 function, u8 offset) {
 	u32 address;

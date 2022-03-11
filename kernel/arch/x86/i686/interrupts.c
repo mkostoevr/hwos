@@ -1,7 +1,7 @@
 #include "interrupts.h"
 #include "../pic.h"
 #include "../ports.h"
-#include <kernel/io/fdo.h>
+#include <kernel/lib/fdo.h>
 
 interrupt_handler_t interrupt_handler_table[256];
 

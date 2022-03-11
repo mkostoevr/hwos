@@ -1,7 +1,7 @@
 #pragma once
 
 #include <kernel/types.h>
-#include <kernel/io/termcolors.h>
+#include <kernel/lib/termcolors.h>
 #include "ports.h"
 
 #define VGA_WIDTH 80

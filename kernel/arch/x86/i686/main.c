@@ -5,7 +5,7 @@
 #include "../pci.h"
 #include <kernel/lib/assert.h>
 #include <kernel/multiboot.h>
-#include <kernel/io/fdo.h>
+#include <kernel/lib/fdo.h>
 #include <kernel/kernel.h>
 #include "gdt.h"
 #include "idt.h"

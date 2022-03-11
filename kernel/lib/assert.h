@@ -1,4 +1,4 @@
-#include <kernel/io/fdo.h>
+#include <kernel/lib/fdo.h>
 
 #ifndef NDEBUG
 #ifdef __cplusplus

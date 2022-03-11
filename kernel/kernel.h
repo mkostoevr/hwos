@@ -1,8 +1,8 @@
 #pragma once
 
 #include <kernel/types.h>
-#include <kernel/io/fdo.h>
-#include <kernel/io/termcolors.h>
+#include <kernel/lib/fdo.h>
+#include <kernel/lib/termcolors.h>
 
 #ifdef __cplusplus
 extern "C" {
