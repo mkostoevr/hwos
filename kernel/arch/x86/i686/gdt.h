@@ -1,5 +1,5 @@
 #pragma once
-#include <kernel/libk/string.h>
+#include <kernel/lib/string.h>
 #include <kernel/types.h>
 #include "tss.h"
 

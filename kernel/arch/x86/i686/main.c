@@ -3,7 +3,7 @@
 #include "../vgatext.h"
 #include "../debug.h"
 #include "../pci.h"
-#include <kernel/libk/assert.h>
+#include <kernel/lib/assert.h>
 #include <kernel/multiboot.h>
 #include <kernel/io/fdo.h>
 #include <kernel/kernel.h>

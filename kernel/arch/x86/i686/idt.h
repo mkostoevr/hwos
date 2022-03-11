@@ -1,5 +1,5 @@
 #pragma once
-#include <kernel/libk/string.h>
+#include <kernel/lib/string.h>
 #include <kernel/types.h>
 
 #define IDT_MAX_DESCRIPTORS 256
