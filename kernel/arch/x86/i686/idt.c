@@ -54,6 +54,22 @@ void idt_install() {
     idt_set_gate(29, interrupt_handler29, 0x08, 0x8E);
     idt_set_gate(30, interrupt_handler30, 0x08, 0x8E);
     idt_set_gate(31, interrupt_handler31, 0x08, 0x8E);
+    idt_set_gate(32, interrupt_handler32, 0x08, 0x8E);
+    idt_set_gate(33, interrupt_handler33, 0x08, 0x8E);
+    idt_set_gate(34, interrupt_handler34, 0x08, 0x8E);
+    idt_set_gate(35, interrupt_handler35, 0x08, 0x8E);
+    idt_set_gate(36, interrupt_handler36, 0x08, 0x8E);
+    idt_set_gate(37, interrupt_handler37, 0x08, 0x8E);
+    idt_set_gate(38, interrupt_handler38, 0x08, 0x8E);
+    idt_set_gate(39, interrupt_handler39, 0x08, 0x8E);
+    idt_set_gate(40, interrupt_handler40, 0x08, 0x8E);
+    idt_set_gate(41, interrupt_handler41, 0x08, 0x8E);
+    idt_set_gate(42, interrupt_handler42, 0x08, 0x8E);
+    idt_set_gate(43, interrupt_handler43, 0x08, 0x8E);
+    idt_set_gate(44, interrupt_handler44, 0x08, 0x8E);
+    idt_set_gate(45, interrupt_handler45, 0x08, 0x8E);
+    idt_set_gate(46, interrupt_handler46, 0x08, 0x8E);
+    idt_set_gate(47, interrupt_handler47, 0x08, 0x8E);
 
     set_interrupt_handler(0, divide_by_zero);
     

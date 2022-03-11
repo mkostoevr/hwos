@@ -49,6 +49,22 @@ interrupt_handler_noerrorcode 28
 interrupt_handler_noerrorcode 29
 interrupt_handler_noerrorcode 30
 interrupt_handler_noerrorcode 31
+interrupt_handler_noerrorcode 32
+interrupt_handler_noerrorcode 33
+interrupt_handler_noerrorcode 34
+interrupt_handler_noerrorcode 35
+interrupt_handler_noerrorcode 36
+interrupt_handler_noerrorcode 37
+interrupt_handler_noerrorcode 38
+interrupt_handler_noerrorcode 39
+interrupt_handler_noerrorcode 40
+interrupt_handler_noerrorcode 41
+interrupt_handler_noerrorcode 42
+interrupt_handler_noerrorcode 43
+interrupt_handler_noerrorcode 44
+interrupt_handler_noerrorcode 45
+interrupt_handler_noerrorcode 46
+interrupt_handler_noerrorcode 47
 
 .extern common_interrupt_handler
 common_interrupt_handler_wrapper:

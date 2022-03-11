@@ -51,23 +51,22 @@ void interrupt_handler28();
 void interrupt_handler29();
 void interrupt_handler30();
 void interrupt_handler31();
-
-// void interrupt_handler32();
-// void interrupt_handler33();
-// void interrupt_handler34();
-// void interrupt_handler35();
-// void interrupt_handler36();
-// void interrupt_handler37();
-// void interrupt_handler38();
-// void interrupt_handler39();
-// void interrupt_handler40();
-// void interrupt_handler41();
-// void interrupt_handler42();
-// void interrupt_handler43();
-// void interrupt_handler44();
-// void interrupt_handler45();
-// void interrupt_handler46();
-// void interrupt_handler47();
+void interrupt_handler32();
+void interrupt_handler33();
+void interrupt_handler34();
+void interrupt_handler35();
+void interrupt_handler36();
+void interrupt_handler37();
+void interrupt_handler38();
+void interrupt_handler39();
+void interrupt_handler40();
+void interrupt_handler41();
+void interrupt_handler42();
+void interrupt_handler43();
+void interrupt_handler44();
+void interrupt_handler45();
+void interrupt_handler46();
+void interrupt_handler47();
 
 #ifdef __cplusplus
 }
