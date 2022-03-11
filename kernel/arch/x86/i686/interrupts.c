@@ -10,6 +10,7 @@ void set_interrupt_handler(u8 num, interrupt_handler_t handler) {
 }
 
 void common_interrupt_handler(interrupt_ctx_t regs) {
+    printk_dup(FDO_ARCH_i686 "%wInterrupt #%d%y\n", LIGHT_YELLOW, regs.int_num);
     if (interrupt_handler_table[regs.int_num]) {
         interrupt_handler_table[regs.int_num](regs);
     }
