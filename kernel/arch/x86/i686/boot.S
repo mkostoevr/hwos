@@ -31,8 +31,6 @@ start:
     cli 				     # Block interrupts
     mov     $stack_top, %esp # Set up the stack
     and     $-16, %esp       # Make sure our stack is 16-byte aligned
-    pushl   %eax             # Multiboot magic number
-    pushl   %ebx             # Multiboot structure
     call    arch_kmain
     hlt 				     # Halt the CPU
 

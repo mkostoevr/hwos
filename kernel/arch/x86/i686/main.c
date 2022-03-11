@@ -5,19 +5,16 @@
 #include "../pci.h"
 #include "../com.h"
 #include <kernel/lib/assert.h>
-#include <kernel/multiboot.h>
 #include <kernel/lib/fdo.h>
 #include <kernel/kernel.h>
 #include "gdt.h"
 #include "idt.h"
 
-void arch_kmain(struct multiboot* mboot, u32 mboot_magic) {
+void arch_kmain() {
 
     printk_log("Hello, World!\n");
 
     vgatext_init((void *)0xB8000);
-
-    assert(mboot_magic == MULTIBOOT_EAX_MAGIC);
 
     printk_dup(FDO_ARCH_i686 "Hello from arch_kmain\n");
 
