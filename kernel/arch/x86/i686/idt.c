@@ -13,9 +13,9 @@ void idt_set_gate(u8 num, idt_gate_t isr, u16 cs, u8 flags) {
 }
 
 void idt_install() {
-    idt.idtr.limit = IDT_MAX_DESCRIPTORS - 1;
+    idt.idtr.limit = (sizeof(idt_entry_t) * IDT_MAX_DESCRIPTORS) - 1;
     idt.idtr.base = (u32)&idt.entries[0];
-    memset(&idt.entries[0], 0, IDT_MAX_DESCRIPTORS);
+    memset(&idt.entries[0], 0, sizeof(idt_entry_t) * IDT_MAX_DESCRIPTORS);
 
     pic_remap();
     pic_unmask_all();
