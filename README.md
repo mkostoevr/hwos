@@ -3,10 +3,14 @@
 Operating system made for educational purposes.
 
 The goal is to understand from the software perspective:
+- GDT
+- LDT
+- IDT
+- PIC [DONE]
+- COM UART
 - PCI & PCIe
 - MMIO
 - DMA
-- PIC [DONE]
 - PCI device interrupts: $PIR
 - APIC
 - PCI device interrupts: MSI
