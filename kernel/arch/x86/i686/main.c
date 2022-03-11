@@ -3,6 +3,7 @@
 #include "../vgatext.h"
 #include "../debug.h"
 #include "../pci.h"
+#include "../com.h"
 #include <kernel/lib/assert.h>
 #include <kernel/multiboot.h>
 #include <kernel/lib/fdo.h>
@@ -25,6 +26,12 @@ void arch_kmain(struct multiboot* mboot, u32 mboot_magic) {
 
     idt_install();
     printk_dup(FDO_ARCH_i686 "IDT installed\n");
+
+    if (!com1_initialize()) {
+        printk_dup(FDO_ARCH_i686 "Failed to initialize COM1 serial\n");
+    } else {
+        printk_dup(FDO_ARCH_i686 "COM1 serial initialized\n");
+    }
 
     kmain();
 }

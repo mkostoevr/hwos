@@ -115,6 +115,7 @@
 // SCratch Register
 #define PORT_COM1_SCR (PORT_COM1 + 7)
 
+int com1_initialize();
 int com1_is_transmit_empty();
 int com1_is_data_ready();
 void com1_write_char(char a);
