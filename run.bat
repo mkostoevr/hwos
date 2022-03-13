@@ -1,2 +1,2 @@
 python3 build.py
-i686-qemu-run-kernel.bat
+qemu-system-i386 -m 512 -kernel kernel/kernel.elf -serial stdio -L C:\Path\qemu
