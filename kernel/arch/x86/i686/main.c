@@ -1,5 +1,6 @@
 #include <kernel/types.h>
 
+#include "../x86.h"
 #include "../vgatext.h"
 #include "../debug.h"
 #include "../pci.h"
