@@ -29,6 +29,8 @@ void arch_kmain() {
     idt_install();
     printk_dup(FDO_ARCH_i686 "IDT installed\n");
 
+    asm volatile ("sti");
+
     if (!com1_initialize()) {
         printk_dup(FDO_ARCH_i686 "Failed to initialize COM1 serial\n");
     } else {
