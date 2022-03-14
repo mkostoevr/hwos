@@ -1,5 +1,4 @@
 #include "idt.h"
-#include "../pic.h"
 #include "interrupts.h"
 
 static idt_t idt;
