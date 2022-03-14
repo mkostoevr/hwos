@@ -84,3 +84,27 @@
 #define SS_INDEX 0xfff8
 #define SS_TI    0x0004
 #define SS_RPL   0x0003
+
+// SDM Vol. 3 Ch. 3.4.5 Segment Descriptors
+// Figure 3-8. Segment Descriptor
+#define SD_D0_SEGMENT_LIMIT_15_00 0x0000ffff
+#define SD_D0_BASE_ADDRESS_15_00  0xffff0000
+#define SD_D1_BASE_23_16          0x000000ff
+#define SD_D1_TYPE                0x00000f00
+#define SD_D1_S                   0x00001000
+#define SD_D1_S_SYSTEM            0x00000000
+#define SD_D1_S_CODE_OR_DATA      0x00001000
+#define SD_D1_DPL                 0x00006000
+#define SD_D1_DPL_RING0           0x00000000
+#define SD_D1_DPL_RING1           0x00002000
+#define SD_D1_DPL_RING2           0x00004000
+#define SD_D1_DPL_RING3           0x00006000
+#define SD_D1_PRESENT             0x00008000
+#define SD_D1_SEG_LIMIT_19_16     0x000f0000
+#define SD_D1_AVL                 0x00100000
+#define SD_D1_L                   0x00200000
+#define SD_D1_DB                  0x00400000
+#define SD_D1_DB_16BIT_SEGMENT    0x00000000
+#define SD_D1_DB_32BIT_SEGMENT    0x00400000
+#define SD_D1_GRANULARITY         0x00800000
+#define SD_D1_BASE_31_24          0xff000000
