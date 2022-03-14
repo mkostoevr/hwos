@@ -11,6 +11,34 @@ void pic_unmask_all() {
     outb(PIC_SLAVE_DAT, 0x00);
 }
 
+void pic_mask_irq(unsigned char IRQline) {
+    uint16_t port;
+    uint8_t value;
+
+    if(IRQline < 8) {
+        port = PIC_MASTER_DAT;
+    } else {
+        port = PIC_SLAVE_DAT;
+        IRQline -= 8;
+    }
+    value = inb(port) | (1 << IRQline);
+    outb(port, value);
+}
+
+void pic_unmask_irq(unsigned char IRQline) {
+    uint16_t port;
+    uint8_t value;
+
+    if(IRQline < 8) {
+        port = PIC_MASTER_DAT;
+    } else {
+        port = PIC_SLAVE_DAT;
+        IRQline -= 8;
+    }
+    value = inb(port) & ~(1 << IRQline);
+    outb(port, value);
+}
+
 // Performs PIC remapping
 // Offset of controller is a number,
 // that controller adds to irq line number before passing it to the cpu.
@@ -62,4 +90,5 @@ void pic_remap() {
 void pic_initialize() {
     pic_remap();
     pic_unmask_all();
+    pic_mask_irq(0);
 }
