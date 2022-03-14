@@ -17,9 +17,6 @@ void idt_install() {
     idt.idtr.base = (u32)&idt.entries[0];
     memset(&idt.entries[0], 0, sizeof(idt_entry_t) * IDT_MAX_DESCRIPTORS);
 
-    pic_remap();
-    pic_unmask_all();
-
     // 0x08 - kernel CS segment
     // 0x8E - Present, DPL = 0, GateType = 0xE(32 bit trap gate)
     idt_set_gate(0, interrupt_handler0, 0x08, 0x8E);

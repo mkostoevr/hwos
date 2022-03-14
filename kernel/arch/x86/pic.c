@@ -36,3 +36,8 @@ void pic_remap() {
     outb(PIC_SLAVE_DAT, 0x01);
     wait_few_usecs();
 }
+
+void pic_initialize() {
+    pic_remap();
+    pic_unmask_all();
+}

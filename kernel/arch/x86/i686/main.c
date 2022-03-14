@@ -4,6 +4,7 @@
 #include "../vgatext.h"
 #include "../debug.h"
 #include "../pci.h"
+#include "../pic.h"
 #include "../com.h"
 #include <kernel/lib/assert.h>
 #include <kernel/lib/fdo.h>
@@ -21,6 +22,9 @@ void arch_kmain() {
 
     gdt_install();
     printk_dup(FDO_ARCH_i686 "GDT installed\n");
+
+    pic_initialize();
+    printk_dup(FDO_ARCH_i686 "PIC initialized\n");
 
     idt_install();
     printk_dup(FDO_ARCH_i686 "IDT installed\n");
