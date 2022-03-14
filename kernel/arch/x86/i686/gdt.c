@@ -13,18 +13,6 @@ void gdt_set_gate(u8 num, u64 base, u64 limit, u8 access, u8 gran) {
     gdt.entries[num].access = access;
 }
 
-void gdt_set_gsbase(uintptr_t base) {
-    gdt.entries[6].base_low = (base & 0xFFFF);
-    gdt.entries[6].base_middle = (base >> 16) & 0xFF;
-    gdt.entries[6].base_high = (base >> 24) & 0xFF;
-    asm volatile("mov %0, %%gs" ::"r"((6 << 3) | 0x3));
-}
-
-uintptr_t gdt_get_gsbase(void) {
-    return (gdt.entries[6].base_low) | (gdt.entries[6].base_middle << 16) |
-           (gdt.entries[6].base_high << 24);
-}
-
 void write_tss(int32_t num, u16 ss0, uint32_t esp0) {
     tss_entry_t *tss = &gdt.tss;
     uintptr_t base = (uintptr_t)tss;
@@ -45,10 +33,6 @@ void write_tss(int32_t num, u16 ss0, uint32_t esp0) {
     tss->gs = 0x13;
 
     tss->iomap_base = sizeof *tss;
-}
-
-void set_kernel_stack(uintptr_t stack) {
-    gdt.tss.esp0 = stack;
 }
 
 void gdt_install() {

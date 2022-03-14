@@ -26,8 +26,5 @@ static struct {
 void gdt_flush(uintptr_t);
 
 void gdt_set_gate(u8 num, u64 base, u64 limit, u8 access, u8 gran);
-void gdt_set_gsbase(uintptr_t base);
-uintptr_t gdt_get_gsbase(void);
 void write_tss(int32_t num, u16 ss0, uint32_t esp0);
-void set_kernel_stack(uintptr_t stack);
 void gdt_install();
