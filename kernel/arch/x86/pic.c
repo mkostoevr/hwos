@@ -23,18 +23,40 @@ void pic_unmask_all() {
 // Its not much, but we also use software interrupts (int instruction),
 // because they go directly to the cpu, bypassing pic.
 void pic_remap() {
-    outb(PIC_MASTER_CMD, 0x11); // starts the initialization sequence (in cascade mode)
-    outb(PIC_SLAVE_CMD, 0x11);
+    unsigned char a1 = inb(PIC_MASTER_DAT);
+    unsigned char a2 = inb(PIC_SLAVE_DAT);
+
+    // Start the initialization sequence (in cascade mode)
+    outb(PIC_MASTER_CMD, ICW1_INIT | ICW1_ICW4);
     wait_few_usecs();
-    outb(PIC_MASTER_DAT, 0x20); // ICW2: Master PIC vector offset
-    outb(PIC_SLAVE_DAT, 0x28); // ICW2: Slave PIC vector offset
+    outb(PIC_SLAVE_CMD, ICW1_INIT | ICW1_ICW4);
     wait_few_usecs();
-    outb(PIC_MASTER_DAT, 0x04); // ICW3: tell Master PIC that there is a slave PIC at IRQ2 (0000 0100)
-    outb(PIC_SLAVE_DAT, 0x02); // ICW3: tell Slave PIC its cascade identity (0000 0010)
+
+    // ICW2: set Master PIC vector offset to 32
+    outb(PIC_MASTER_DAT, 0x20);
     wait_few_usecs();
-    outb(PIC_MASTER_DAT, 0x01); // 8086/88 (MCS-80/85) mode
-    outb(PIC_SLAVE_DAT, 0x01);
+
+    // ICW2: set Slave PIC vector offset to 40
+    outb(PIC_SLAVE_DAT, 0x28);
     wait_few_usecs();
+
+    // ICW3: tell Master PIC that there is a slave PIC at IRQ2 (0000 0100)
+    outb(PIC_MASTER_DAT, 0x04);
+    wait_few_usecs();
+
+    // ICW3: tell Slave PIC its cascade identity (0000 0010)
+    outb(PIC_SLAVE_DAT, 0x02);
+    wait_few_usecs();
+
+    // 8086/88 (MCS-80/85) mode
+    outb(PIC_MASTER_DAT, ICW4_8086);
+    wait_few_usecs();
+    outb(PIC_SLAVE_DAT, ICW4_8086);
+    wait_few_usecs();
+
+    // Restore saved masks
+    outb(PIC_MASTER_DAT, a1);
+    outb(PIC_SLAVE_DAT, a2);
 }
 
 void pic_initialize() {
