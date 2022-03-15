@@ -22,5 +22,5 @@ static struct {
 void gdt_flush(uintptr_t);
 
 void gdt_set_gate(u8 num, u64 base, u64 limit, u32 flags);
-void write_tss(int32_t num, u16 ss0, uint32_t esp0);
+void write_tss(int32_t num);
 void gdt_install();

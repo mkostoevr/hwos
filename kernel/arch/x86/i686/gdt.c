@@ -12,7 +12,7 @@ void gdt_set_gate(u8 num, u64 base, u64 limit, u32 flags) {
                         | flags;
 }
 
-void write_tss(int32_t num, u16 ss0, uint32_t esp0) {
+void write_tss(int32_t num) {
     tss_entry_t *tss = &gdt.tss;
     uintptr_t base = (uintptr_t)tss;
     uintptr_t limit = base + sizeof *tss;
@@ -24,8 +24,8 @@ void write_tss(int32_t num, u16 ss0, uint32_t esp0) {
 
     memset(tss, 0x0, sizeof *tss);
 
-    tss->ss0 = ss0;
-    tss->esp0 = esp0;
+    tss->ss0 = SS(2) | SS_RPL_RING0;
+    tss->esp0 = 0;
     tss->cs = SS(1) | SS_RPL_RING3;
     tss->ss = SS(2) | SS_RPL_RING3;
     tss->ds = SS(2) | SS_RPL_RING3;
@@ -53,7 +53,7 @@ void gdt_install() {
     gdt_set_gate(2, 0, 0xFFFFFFFF, flags | ring0 | data);
     gdt_set_gate(3, 0, 0xFFFFFFFF, flags | ring3 | code);
     gdt_set_gate(4, 0, 0xFFFFFFFF, flags | ring3 | data);
-    write_tss(5, SS(2) | SS_RPL_RING0, 0x0);
+    write_tss(5);
     gdt_set_gate(6, 0, 0xFFFFFFFF, flags | ring3 | data);
 
     gdt_flush((uintptr_t)gdtp);
