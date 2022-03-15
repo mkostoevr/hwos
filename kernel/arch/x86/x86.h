@@ -108,3 +108,14 @@
 #define SD_D1_DB_32BIT_SEGMENT    0x00400000
 #define SD_D1_GRANULARITY         0x00800000
 #define SD_D1_BASE_31_24          0xff000000
+
+// SDM Vol. 3 Ch. 3.4.5.1 Code- ad Data-Segment Descriptor Types
+// Table 3-1. Code- and Data-Segment Types
+#define SD_D1_TYPE_DATA   0x00000000
+#define SD_D1_TYPE_DATA_E 0x00000400
+#define SD_D1_TYPE_DATA_W 0x00000200
+#define SD_D1_TYPE_DATA_A 0x00000100
+#define SD_D1_TYPE_CODE   0x00000800
+#define SD_D1_TYPE_CODE_C 0x00000400
+#define SD_D1_TYPE_CODE_R 0x00000200
+#define SD_D1_TYPE_CODE_A 0x00000100
