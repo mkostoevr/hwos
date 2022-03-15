@@ -79,13 +79,13 @@
 #define XCR0_HI16_ZMM_STATE    (1 << 7)
 #define XCR0_PKRU_STATE        (1 << 9)
 
-// SDM Vol. 3 Ch. 3.4.2 Segment Selectors
+// SDM Vol. 3 Ch. 3.4.2 Segment selectors
 // Figure 3-6. Segment Selector
 #define SS_INDEX 0xfff8
 #define SS_TI    0x0004
 #define SS_RPL   0x0003
 
-// SDM Vol. 3 Ch. 3.4.5 Segment Descriptors
+// SDM Vol. 3 Ch. 3.4.5 Segment descriptors
 // Figure 3-8. Segment Descriptor
 #define SD_D0_SEGMENT_LIMIT_15_00 0x0000ffff
 #define SD_D0_BASE_ADDRESS_15_00  0xffff0000
@@ -109,7 +109,7 @@
 #define SD_D1_GRANULARITY         0x00800000
 #define SD_D1_BASE_31_24          0xff000000
 
-// SDM Vol. 3 Ch. 3.4.5.1 Code- ad Data-Segment Descriptor Types
+// SDM Vol. 3 Ch. 3.4.5.1 Code- ad data-segment descriptor types
 // Table 3-1. Code- and Data-Segment Types
 #define SD_D1_TYPE_DATA   0x00000000
 #define SD_D1_TYPE_DATA_E 0x00000400
@@ -119,3 +119,18 @@
 #define SD_D1_TYPE_CODE_C 0x00000400
 #define SD_D1_TYPE_CODE_R 0x00000200
 #define SD_D1_TYPE_CODE_A 0x00000100
+
+// SDM Vol. 3 Ch. 3.5 System descriptor types
+// Table 3-2. System-Segment and Gate-Sescriptor Types
+#define SD_D1_TYPE_SYSTEM_16BIT_TSS_AVAILABLE  0x00000100
+#define SD_D1_TYPE_SYSTEM_LDT                  0x00000200
+#define SD_D1_TYPE_SYSTEM_16BIT_TSS_BUSY       0x00000300
+#define SD_D1_TYPE_SYSTEM_16BIT_CALL_GATE      0x00000400
+#define SD_D1_TYPE_SYSTEM_TASK_GATE            0x00000500
+#define SD_D1_TYPE_SYSTEM_16BIT_INTERRUPT_GATE 0x00000600
+#define SD_D1_TYPE_SYSTEM_16BIT_TRAP_GATE      0x00000700
+#define SD_D1_TYPE_SYSTEM_32BIT_TSS_AVAILABLE  0x00000900
+#define SD_D1_TYPE_SYSTEM_32BIT_TSS_BUSY       0x00000B00
+#define SD_D1_TYPE_SYSTEM_32BIT_CALL_GATE      0x00000C00
+#define SD_D1_TYPE_SYSTEM_32BIT_INTERRUPT_GATE 0x00000E00
+#define SD_D1_TYPE_SYSTEM_32BIT_TRAP_GATE      0x00000F00

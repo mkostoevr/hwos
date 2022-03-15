@@ -18,8 +18,7 @@ void write_tss(int32_t num, u16 ss0, uint32_t esp0) {
     uintptr_t limit = base + sizeof *tss;
 
     // Add the TSS descriptor to the GDT
-    gdt_set_gate(num, base, limit, SD_D1_TYPE_CODE
-                                 | SD_D1_TYPE_CODE_A
+    gdt_set_gate(num, base, limit, SD_D1_TYPE_SYSTEM_32BIT_TSS_AVAILABLE
                                  | SD_D1_DPL_RING3
                                  | SD_D1_PRESENT);
 
