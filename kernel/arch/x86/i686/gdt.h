@@ -1,7 +1,6 @@
 #pragma once
 #include <kernel/lib/string.h>
 #include <kernel/types.h>
-#include "tss.h"
 
 typedef struct {
     u32 d0;
@@ -16,7 +15,6 @@ typedef struct {
 static struct {
     gdt_entry_t entries[7];
     gdt_pointer_t pointer;
-    tss_entry_t tss;
 } gdt __attribute__((used));
 
 void gdt_flush(uintptr_t);
