@@ -1,5 +1,10 @@
 #pragma once
 
+#define ADDR32_MIN 0x00000000
+#define ADDR32_MAX 0xFFFFFFFF
+#define ADDR64_MIN 0x0000000000000000LLU
+#define ADDR64_MAX 0xFFFFFFFFFFFFFFFFLLU
+
 // SDM Vol. 3 Ch. 2.3 System flags and fields in the EFLAGS register
 // Figure 2-5. System Flags in the EFLAGS Register
 #define EFLAGS_CF    (1 << 0)

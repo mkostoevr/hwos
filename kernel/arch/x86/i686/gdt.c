@@ -24,12 +24,11 @@ void gdt_install() {
     u32 code = SD_D1_TYPE_CODE | SD_D1_TYPE_CODE_R;
     u32 data = SD_D1_TYPE_DATA | SD_D1_TYPE_DATA_W;
 
-    gdt_set_gate(0, 0, 0, 0); // NULL segment
-    gdt_set_gate(1, 0, 0xFFFFFFFF, flags | ring0 | code);
-    gdt_set_gate(2, 0, 0xFFFFFFFF, flags | ring0 | data);
-    gdt_set_gate(3, 0, 0xFFFFFFFF, flags | ring3 | code);
-    gdt_set_gate(4, 0, 0xFFFFFFFF, flags | ring3 | data);
+    gdt_set_gate(GDT_NULL,        0x00000000, 0x00000000, 0);
+    gdt_set_gate(GDT_KERNEL_CODE, ADDR32_MIN, ADDR32_MAX, flags | ring0 | code);
+    gdt_set_gate(GDT_KERNEL_DATA, ADDR32_MIN, ADDR32_MAX, flags | ring0 | data);
+    gdt_set_gate(GDT_USER_CODE,   ADDR32_MIN, ADDR32_MAX, flags | ring3 | code);
+    gdt_set_gate(GDT_USER_DATA,   ADDR32_MIN, ADDR32_MAX, flags | ring3 | data);
 
     gdt_flush((uintptr_t)gdtp);
 }
-

@@ -1,3 +1,6 @@
+#include "../x86.h"
+#include "gdt.h"
+
 // for interrupts with no error code
 .macro interrupt_handler_noerrorcode num
 .global interrupt_handler\num
@@ -75,7 +78,7 @@ common_interrupt_handler_wrapper:
     push    %eax
 
     // load kernel DS
-    mov     $0x10, %ax 
+    mov     $SS(GDT_KERNEL_DATA), %ax 
     mov     %ax, %ds
     mov     %ax, %es
     mov     %ax, %fs
