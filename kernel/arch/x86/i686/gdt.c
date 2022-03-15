@@ -26,12 +26,12 @@ void write_tss(int32_t num, u16 ss0, uint32_t esp0) {
 
     tss->ss0 = ss0;
     tss->esp0 = esp0;
-    tss->cs = 0x0b;
-    tss->ss = 0x13;
-    tss->ds = 0x13;
-    tss->es = 0x13;
-    tss->fs = 0x13;
-    tss->gs = 0x13;
+    tss->cs = SS(1) | SS_RPL_RING3;
+    tss->ss = SS(2) | SS_RPL_RING3;
+    tss->ds = SS(2) | SS_RPL_RING3;
+    tss->es = SS(2) | SS_RPL_RING3;
+    tss->fs = SS(2) | SS_RPL_RING3;
+    tss->gs = SS(2) | SS_RPL_RING3;
 
     tss->iomap_base = sizeof *tss;
 }
@@ -53,7 +53,7 @@ void gdt_install() {
     gdt_set_gate(2, 0, 0xFFFFFFFF, flags | ring0 | data);
     gdt_set_gate(3, 0, 0xFFFFFFFF, flags | ring3 | code);
     gdt_set_gate(4, 0, 0xFFFFFFFF, flags | ring3 | data);
-    write_tss(5, 0x10, 0x0);
+    write_tss(5, SS(2) | SS_RPL_RING0, 0x0);
     gdt_set_gate(6, 0, 0xFFFFFFFF, flags | ring3 | data);
 
     gdt_flush((uintptr_t)gdtp);

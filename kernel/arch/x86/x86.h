@@ -81,9 +81,16 @@
 
 // SDM Vol. 3 Ch. 3.4.2 Segment selectors
 // Figure 3-6. Segment Selector
-#define SS_INDEX 0xfff8
-#define SS_TI    0x0004
-#define SS_RPL   0x0003
+#define SS_INDEX     0xfff8
+#define SS_TI        0x0004 // Table indicator
+#define SS_TI_GDT    0x0000
+#define SS_TI_LDT    0x0004
+#define SS_RPL       0x0003 // Requested Privilige Level
+#define SS_RPL_RING0 0x0000
+#define SS_RPL_RING1 0x0001
+#define SS_RPL_RING2 0x0002
+#define SS_RPL_RING3 0x0003
+#define SS(INDEX) (INDEX << 3)
 
 // SDM Vol. 3 Ch. 3.4.5 Segment descriptors
 // Figure 3-8. Segment Descriptor
