@@ -5,9 +5,9 @@ Operating system made for educational purposes.
 The goal is to understand from the software perspective:
 - GDT
 - LDT
-- IDT
+- IDT (NMI)
 - PIC [DONE]
-- COM UART
+- [COM UART](https://www.lammertbies.nl/comm/info/serial-uart)
 - PCI & PCIe
 - MMIO
 - DMA
