@@ -361,7 +361,7 @@ if __name__ == '__main__':
     objects = " ".join(objects)
     linker_script = f"kernel/arch/{ARCH_FAMILY}/{ARCH}/link.ld"
     print("Linkng...")
-    linker = "ld.lld" if is_win32 else "lld"
+    linker = "ld.lld"
     os.system(f"{linker} -T {linker_script} -o kernel/kernel.elf {objects}")
     timer_end = timer()
     print(f"Elapsed time: {timer_end - timer_start:.4}")
