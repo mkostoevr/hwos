@@ -74,14 +74,14 @@ class Qemu:
     def wait(self, seconds = 0.25):
         time.sleep(seconds)
 
-def run_qemu(arch):
+def run_qemu(arch, nographic = "-nographic", kernel_img="../../kernel/kernel.elf"):
     qemu_command = f"qemu-system-{arch}"
     flags = ""
     if is_win32:
         qemu_full_path = shutil.which(qemu_command)
         qemu_directory = build.get_file_directory(qemu_full_path)
         flags += f"-L {qemu_directory}"
-    s = f"{qemu_command} -nographic {flags} -kernel ../../kernel/kernel.elf -debugcon file:debug.log"
+    s = f"{qemu_command} {nographic} {flags} -kernel {kernel_img} -debugcon file:debug.log"
     a = shlex.split(s)
     if is_win32:
         return subprocess.Popen(s, bufsize = 0, stdout = subprocess.DEVNULL, stderr = subprocess.DEVNULL, stdin = subprocess.DEVNULL, shell = True, start_new_session = True)
