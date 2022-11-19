@@ -118,5 +118,7 @@
 int com1_initialize();
 int com1_is_transmit_empty();
 int com1_is_data_ready();
-void com1_write_char(char a);
 char com1_read_char();
+char com1_read_char_raw();
+void com1_write_char(char a);
+void com1_write_char_raw(char a);

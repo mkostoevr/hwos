@@ -12,7 +12,7 @@ typedef void (*interrupt_handler_t)(interrupt_ctx_t);
 void set_interrupt_handler(u8 num, interrupt_handler_t handler);
 void common_interrupt_handler(interrupt_ctx_t regs);
 void divide_by_zero(interrupt_ctx_t regs);
-
+void uart_input(interrupt_ctx_t regs);
 
 // interrupt handlers declarations:
 void interrupt_handler0();

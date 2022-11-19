@@ -1,6 +1,7 @@
 #include "interrupts.h"
 #include "../pic.h"
 #include "../ports.h"
+#include "../com.h"
 #include <kernel/lib/fdo.h>
 
 interrupt_handler_t interrupt_handler_table[256];
@@ -31,3 +32,9 @@ void divide_by_zero(interrupt_ctx_t regs) {
     asm("hlt");
 }
 
+void uart_input(interrupt_ctx_t regs) {
+    (void)regs;
+    char c = com1_read_char_raw();
+    printk_dup(FDO_ARCH_i686 "UART input: '%c'\n", c);
+    com1_write_char_raw(c);
+}

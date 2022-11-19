@@ -68,6 +68,7 @@ void idt_install() {
     idt_set_gate(47, interrupt_handler47, 0x08, 0x8E);
 
     set_interrupt_handler(0, divide_by_zero);
+    set_interrupt_handler(36, uart_input);
     
     idt_load(&idt.idtr);
 }
